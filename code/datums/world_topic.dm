@@ -434,7 +434,7 @@
 	data["hub"] = GLOB.hub_visibility
 
 	data["security_level"] = SSsecurity_level.get_current_level_as_text()
-	data["round_duration"] = SSticker ? round((world.time-SSticker.round_start_time)/10) : 0
+	data["round_duration"] = world.time/10
 
 	//Time dilation stats.
 	data["time_dilation_current"] = SStime_track.time_dilation_current
