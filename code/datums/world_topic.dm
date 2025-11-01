@@ -416,6 +416,9 @@
 	data["ai"] = CONFIG_GET(flag/allow_ai)
 	data["host"] = world.host ? world.host : null
 
+	data["time_left"] = SSticker.timeLeft
+	data["delay"] = SSticker.timeLeft < 0
+
 	data["round_id"] = GLOB.round_id
 
 	data["map_name"] = SSmapping.current_map?.map_name || "Loading..."
@@ -538,9 +541,9 @@ GLOBAL_LIST_EMPTY(bot_asay_sending_que)
 		response = "Delay already set to same state."
 		return
 
-	SSticker.timeLeft = input["delay"] ? -1 : 300
-	message_admins(span_notice("[input["source"]] ([input["addr"]]) [SSticker.timeLeft < 0 ? "delayed the round start" : "has made the round start normally"]."))
-	to_chat(world, span_notice("The game start has been [SSticker.timeLeft < 0 ? "delayed" : "continued"]."))
+	SSticker.timeLeft = input["delay"] == 1 ? -1 : 300
+	message_admins(span_notice("[input["source"]] ([input["addr"]]) [SSticker.timeLeft == 1 ? "delayed the round start" : "has made the round start normally"]."))
+	to_chat(world, span_notice("The game start has been [SSticker.timeLeft == 1 ? "delayed" : "continued"]."))
 	if(SSticker.timeLeft < 0)
 		statuscode = 200
 		response = "Delay set."
