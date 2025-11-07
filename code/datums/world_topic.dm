@@ -520,11 +520,11 @@ GLOBAL_LIST_EMPTY(bot_asay_sending_que)
 			var/msg = sanitize(data["message"])
 			for(var/client/C in GLOB.clients)
 				if(C.prefs.chat_toggles & CHAT_OOC)
-					to_chat(C, "<span class='ooc'><span class='prefix'>DISCORD OOC:</span> <EM>[data["author"]]:</EM> <span class='message linkify'>[msg]</span></span>")
+					to_chat(C, span_ooc("<font color='[GLOB.OOC_COLOR]'><b>[span_prefix("DISCORD OOC:")] <EM>[data["author"]]:</EM> <span class='message linkify'>[msg]</span></b></font>"))
 
 	if(bot_data["admin"])
 		for(var/list/data in bot_data["admin"])
-			to_chat(GLOB.admins, "<span class='adminsay'><span class='prefix'>DISCORD ADMIN:</span> <EM>[data["author"]]</EM>: <span class='message linkify'>[sanitize(data["message"])]</span></span>", confidential = TRUE)
+			to_chat(GLOB.admins, span_adminsay("[span_prefix("DISCORD ADMIN:")] <EM>[data["author"]]</EM>: <span class='message linkify'>[sanitize(data["message"])]</span>"))
 
 	statuscode = 200
 	response = "Events received."
