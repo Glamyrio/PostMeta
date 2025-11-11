@@ -45,7 +45,8 @@
 /* --- Reverts --- */
 
 #include "reverts\beheading\includes.dm"
-#include "reverts\buff_lasers\includes.dm"
+//We've decided this module has been proven unneccessary.
+//#include "reverts\buff_lasers\includes.dm"
 #include "reverts\bulky_extinguishers\includes.dm"
 #include "reverts\colossus\includes.dm"
 #include "reverts\glasses_protect\includes.dm"
