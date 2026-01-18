@@ -40,11 +40,13 @@
 #include "features\deathmatch\includes.dm"
 #include "features\countdown_antimov_sfx\includes.dm"
 #include "features\novichok\includes.dm"
+#include "features\jukeboxes_to_bartender\includes.dm"
 
 /* --- Reverts --- */
 
 #include "reverts\beheading\includes.dm"
-#include "reverts\buff_lasers\includes.dm"
+//We've decided this module has been proven unneccessary.
+//#include "reverts\buff_lasers\includes.dm"
 #include "reverts\bulky_extinguishers\includes.dm"
 #include "reverts\colossus\includes.dm"
 #include "reverts\glasses_protect\includes.dm"
@@ -65,3 +67,4 @@
 #include "tweaks\lead_pipe\includes.dm"
 #include "tweaks\lgbt_removal\includes.dm"
 #include "tweaks\tagline\includes.dm"
+#include "tweaks\simple_vote_by_default\includes.dm"
