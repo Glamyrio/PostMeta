@@ -137,7 +137,7 @@
 /mob/living/basic/guardian/proc/guardian_recolour()
 	if (isnull(client))
 		return
-	var/chosen_guardian_colour = input(src, "What would you like your colour to be?", "Choose Your Colour", "#ffffff") as color|null
+	var/chosen_guardian_colour = tgui_color_picker(src, "What would you like your colour to be?", "Choose Your Colour", COLOR_WHITE)
 	if (isnull(chosen_guardian_colour)) //redo proc until we get a color
 		to_chat(src, span_warning("Invalid colour, please try again."))
 		return guardian_recolour()
@@ -191,16 +191,16 @@
 			gib()
 			return TRUE
 		if (EXPLODE_HEAVY)
-			adjustBruteLoss(60)
+			adjust_brute_loss(60)
 		if (EXPLODE_LIGHT)
-			adjustBruteLoss(30)
+			adjust_brute_loss(30)
 
 	return TRUE
 
 /mob/living/basic/guardian/gib()
 	death(TRUE)
 
-/mob/living/basic/guardian/dust(just_ash, drop_items, force)
+/mob/living/basic/guardian/dust(just_ash, drop_items, give_moodlet, force)
 	death(TRUE)
 
 /// Link up with a summoner mob.
@@ -294,7 +294,7 @@
 	summoner.visible_message(span_bolddanger("Blood sprays from [summoner] as [src] takes damage!"))
 	if(summoner.stat == UNCONSCIOUS || summoner.stat == HARD_CRIT)
 		to_chat(summoner, span_bolddanger("Your head pounds, you can't take the strain of sustaining [src] in this condition!"))
-		summoner.adjustOrganLoss(ORGAN_SLOT_BRAIN, amount * 0.5)
+		summoner.adjust_organ_loss(ORGAN_SLOT_BRAIN, amount * 0.5)
 
 /// When our owner is deleted, we go too.
 /mob/living/basic/guardian/proc/on_summoner_deletion(mob/living/source)
