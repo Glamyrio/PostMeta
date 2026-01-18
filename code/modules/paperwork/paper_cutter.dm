@@ -113,8 +113,7 @@
 
 
 /obj/item/papercutter/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if(istype(tool, /obj/item/paper))
-		if(is_type_in_list(tool, list(
+	if(is_type_in_list(tool, list(
 		//MASSMETA EDIT BEGIN (re_traitorsecondary) ORIGINAL
 		/*
 				/obj/item/paper/fake_report,
@@ -123,12 +122,10 @@
 				/obj/item/paper/paperslip,
 				/obj/item/paper/report,
 		*/
-			/obj/item/paper/paperslip,
-			/obj/item/paper/report,
-			/obj/item/paper/fake_report,
-			/obj/item/paper/calling_card,
-			/obj/item/paper/pamphlet,
-			/obj/item/paper/holy_writ
+		/obj/item/paper/paperslip,
+		/obj/item/paper/calling_card,
+		/obj/item/paper/pamphlet,
+		/obj/item/paper/holy_writ
 		)))
 		//MASSMETA EDIT END
 		if(is_type_in_list(tool, list(/obj/item/paper/holy_writ, /obj/item/paper/pamphlet, /obj/item/paper/paperslip)))
