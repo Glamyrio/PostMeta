@@ -9,7 +9,7 @@
 	icon = 'modular_meta/tweaks/lgbt_removal/icons/pins.dmi'
 	worn_icon = 'modular_meta/tweaks/lgbt_removal/icons/pins_clothing.dmi'
 	icon_state = "flag_russ"
-	unique_reskin = list(
+	/**unique_reskin = list(
 		"Russian flag" = "flag_russ",
 		"Imperial flag" = "flag_imper",
 		"China flag" = "flag_china",
@@ -19,6 +19,7 @@
 		"Iranian flag" = "flag_iran",
 		"Cuban Pete" = "flag_cuba",
 	)
-
+	РЕСКИНЫ ПЕРЕНЕСЕНЫ теперь используют совсем другой принцип -- НЕ список unique_reskins
+	*/
 /datum/loadout_item/accessory/pride
 	name = "Patriotic Pin"

@@ -1,3 +1,5 @@
+// https://github.com/tgstation/tgstation/pull/93775/ -----> This broke all the code below. This needs revision // Пиар слева сломал весь код ниже. Требуется ревизия.
+
 /obj/item
 	var/uses_advanced_reskins = FALSE
 
@@ -57,3 +59,4 @@
 		var/mob/living/carbon/human/wearer = M
 		wearer.regenerate_icons() // update that mf
 	to_chat(M, "[src] is now skinned as '[pick].'")
+
