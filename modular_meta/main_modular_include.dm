@@ -15,7 +15,7 @@
 #include "features\antagonists\includes.dm"
 #include "features\butt_farts\includes.dm"
 #include "features\cheburek_car\includes.dm"
-#include "features\more_clothes\includes.dm"
+//#include "features\more_clothes\includes.dm" upstream 18.01.2026 -- OBSOLETE
 #include "features\hardsuits\includes.dm"
 #include "features\kvass_beverage\includes.dm"
 #include "features\kumiss_beverage\includes.dm"
@@ -26,7 +26,7 @@
 #include "features\uplink_items\includes.dm"
 #include "features\clown_traitor_sound\includes.dm"
 #include "features\woodgen\includes.dm"
-#include "features\not_enough_medical\includes.dm"
+//#include "features\not_enough_medical\includes.dm" -- upstream 18.01.2026. Surgery overhaul has made this code obsolete
 #include "features\more_cell_interactions\includes.dm"
 #include "features\makeshift_grenade_trap\includes.dm"
 #include "features\makeshift_tools\includes.dm"
