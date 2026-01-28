@@ -14,5 +14,5 @@
 /obj/projectile/beam/laser/rapid
 	damage = 12.5
 
-/obj/projective/beam/laser/heavylaser
+/obj/projectile/beam/laser/heavylaser
 	damage = 22.5
