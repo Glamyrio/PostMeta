@@ -4,10 +4,7 @@
 	desc = "A pool of stilled blood kept secure between unanchored glass and silver. Attach it to a wall to use."
 	icon = 'modular_meta/features/antagonists/icons/bloodsuckers/vamp_obj.dmi'
 	icon_state = "blood_mirror"
-	custom_materials = list(
-		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
-		/datum/material/silver = SHEET_MATERIAL_AMOUNT,
-	)
+	custom_materials = list(/datum/material/glass = SHEET_MATERIAL_AMOUNT * 5, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 2)
 	result_path = /obj/structure/bloodsucker/mirror
 	pixel_shift = 28
 

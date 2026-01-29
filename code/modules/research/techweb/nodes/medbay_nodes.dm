@@ -78,11 +78,9 @@
 		"chem_mass_spec",
 		"crewpinpointer",
 		"defibmount",
-		"medicalbed_emergency",
-		"piercesyringe",
 		// MASSMETA EDIT BEGIN (not_enough_medical)
-		"autodoc",
-		"organdoc",
+		//"autodoc",
+		//"organdoc",
 		// MASSMETA EDIT END
 		"diode_disk_healing",
 		"diode_disk_sanity",
