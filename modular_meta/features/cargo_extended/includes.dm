@@ -1,4 +1,4 @@
-//#include "code\bluespaceminers.dm" СЛОМАНО.
+#include "code\bluespaceminers.dm"
 #include "code\cargo_teleporter.dm"
 #include "code\cryptominers.dm"
 
