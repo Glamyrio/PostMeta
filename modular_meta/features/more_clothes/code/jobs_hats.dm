@@ -106,8 +106,6 @@
 	new_icon_state = "wardendrill"
 	new_worn_icon = 'modular_meta/features/more_clothes/icons/on_mob/head/hats.dmi'
 
-
-
 /datum/atom_skin/warden_drill/default
 	preview_name = "Default"
 	new_icon = 'icons/obj/clothing/head/hats.dmi'
