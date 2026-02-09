@@ -38,7 +38,7 @@
 #include "features\roundstart_shell\includes.dm"
 #include "features\telescience\includes.dm"
 #include "features\deathmatch\includes.dm"
-#include "features\countdown_antimov_sfx\includes.dm"
+#include "features\soundtrack_modpack\includes.dm"
 #include "features\novichok\includes.dm"
 #include "features\jukeboxes_to_bartender\includes.dm"
 
