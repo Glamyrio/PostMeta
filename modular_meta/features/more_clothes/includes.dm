@@ -11,7 +11,7 @@
 /datum/modpack/reskins
 	id = "RESKINS"
 	name = "Рескины одежды"
-	group "Features"
+	group = "Features"
 	desc = "<s> Добавляет </s> Уже - нет. \
 	https://github.com/tgstation/tgstation/pull/93775 \
 	Не добавляет, а изменяет наши старые модульные рескины \
