@@ -48,6 +48,16 @@ GLOBAL_LIST_INIT(autodrobe_costumes_items, list(
 	/obj/item/clothing/under/costume/gi = 4,
 	/obj/item/clothing/head/soft/propeller_hat = 3,
 	/obj/item/clothing/neck/bowtie/rainbow = 3,
+	//MASSMETA ADDITION - more clothes
+	/obj/item/clothing/suit/costume/mm/brawler_blazer = 1,
+	/obj/item/clothing/under/costume/mm/lad/brawler = 1,
+	/obj/item/clothing/shoes/laceup/mm/lgray = 1,
+	/obj/item/clothing/under/costume/mm/lad/maddog = 1,
+	/obj/item/clothing/shoes/mm/metalcomb = 1,
+	/obj/item/clothing/under/costume/mm/lad/black_hawaii = 1,
+	/obj/item/clothing/under/costume/mm/lad/red_hawaii = 1,
+	/obj/item/clothing/shoes/laceup/mm/brown = 1,
+	//
 ))
 
 GLOBAL_LIST_INIT(autodrobe_supernatural_items, list(
