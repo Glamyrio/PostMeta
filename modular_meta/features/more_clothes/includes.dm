@@ -1,3 +1,4 @@
+#include "code\autodrobe.dm"
 #include "code\captain_gloves.dm"
 #include "code\chaplain_suits.dm"
 #include "code\jobs_hats.dm"
