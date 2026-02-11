@@ -44,8 +44,8 @@
 		..()
 		return TRUE
 	playsound(caster, 'sound/effects/magic/demon_attack1.ogg', 75, TRUE)
-	victim.adjustBruteLoss(-20)
-	victim.adjustFireLoss(-20)
+	victim.adjust_brute_loss(-20)
+	victim.adjust_fire_loss(-20)
 	victim.visible_message(span_bold("[victim] appears to flash colors of red, before seemingly appearing healthier!"))
 	to_chat(victim, span_warning("You feel a sinister feeling of recovery."))
 	return TRUE
