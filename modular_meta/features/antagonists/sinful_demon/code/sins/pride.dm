@@ -8,6 +8,7 @@
 
 	invocation = "Aren't I so amazing?"
 	invocation_type = INVOCATION_WHISPER
+	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_HANDS_BLOCKED
 	spell_requirements = NONE
 
 	cooldown_time = 30 SECONDS
