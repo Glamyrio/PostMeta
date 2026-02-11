@@ -31,11 +31,15 @@
 
 /obj/item/nuclear_challenge/war_was_declared(mob/living/user, memo)
 	. = ..()
-	play_soundtrack_music('modular_meta/features/countdown_antimov_sfx/sound/soundtrack/future_perception.ogg')
+	play_soundtrack_music('modular_meta/features/soundtrack_modpack/sound/soundtrack/future_perception.ogg')
 
 /obj/machinery/nuclearbomb
 	var/sound/countdown_music = null
 
 /obj/machinery/nuclearbomb/arm_nuke(mob/armer)
 	. = ..()
-	countdown_music = play_soundtrack_music('modular_meta/features/countdown_antimov_sfx/sound/soundtrack/countdown.ogg')
+	countdown_music = play_soundtrack_music('modular_meta/features/soundtrack_modpack/sound/soundtrack/countdown.ogg')
+
+/obj/machinery/nuclearbomb/disarm_nuke(mob/disarmer)
+	. = ..()
+	stop_soundtrack_music()
