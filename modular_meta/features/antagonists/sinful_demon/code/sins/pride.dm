@@ -1,7 +1,7 @@
 /datum/action/cooldown/spell/conjure/summon_mirror
 	name = "Summon Mirror"
 	desc = "Summon forth a temporary mirror of sin that will allow you and others to change anything they want about themselves."
-	button_icon = 'icons/mob/actions/actions_minor_antag.dmi'
+	button_icon = 'modular_meta/features/antagonists/icons/actions_minor_antag.dmi'
 	button_icon_state = "magic_mirror"
 	background_icon_state = "bg_demon"
 	overlay_icon_state = "bg_demon_border"
