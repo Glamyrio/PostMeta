@@ -75,10 +75,11 @@
 	new_icon_state = "hos_cloak"
 	new_worn_icon = 'modular_meta/features/more_clothes/icons/on_mob/suits/armor.dmi'
 
-
-//Due to some stuff(particularly with it having alternative sprite when alt_clicked with reskins \
-it couldn't have been added as reskin variant to the \
+/*
+Due to some stuff(particularly with it having alternative sprite when alt_clicked with reskins
+it couldn't have been added as reskin variant to the
 /obj/item/clothing/suit/armor/hos/hos_formal/ so, we're adding it as a separate item.
+*/
 
 /obj/item/clothing/suit/armor/hos/hos_formal/black
 	name = "\improper Head of Security's parade jacket"

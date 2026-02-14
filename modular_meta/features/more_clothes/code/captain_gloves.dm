@@ -18,5 +18,4 @@
 	preview_name = "Default"
 
 /obj/item/clothing/gloves/captain/setup_reskins()
-	. = ..()
 	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/captain_gloves, infinite = TRUE)

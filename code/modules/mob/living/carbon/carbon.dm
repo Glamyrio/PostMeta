@@ -762,9 +762,8 @@
 	if(heal_flags & HEAL_TRAUMAS)
 		cure_all_traumas(TRAUMA_RESILIENCE_MAGIC)
 		// Addictions are like traumas
-		if(mind)
-			for(var/addiction_type in subtypesof(/datum/addiction))
-				mind.remove_addiction_points(addiction_type, MAX_ADDICTION_POINTS) //Remove the addiction!
+		for(var/addiction_type in GLOB.addictions)
+			mind?.remove_addiction_points(addiction_type, MAX_ADDICTION_POINTS) //Remove the addiction!
 
 	if(heal_flags & HEAL_RESTRAINTS)
 		QDEL_NULL(handcuffed)
@@ -1324,3 +1323,18 @@
 	if(!CAN_HAVE_BLOOD(src))
 		return
 	return dna?.blood_type
+
+/mob/living/carbon/update_nutrition()
+	. = ..()
+	// Force a weight update in case we're stasis'd and don't tick
+	if (HAS_TRAIT_FROM(src, TRAIT_FAT, OBESITY))
+		if (overeatduration >= 200 SECONDS)
+			return
+
+		to_chat(src, span_notice("You feel fit again!"))
+		remove_traits(list(TRAIT_FAT, TRAIT_OFF_BALANCE_TACKLER), OBESITY)
+		return
+
+	if (overeatduration >= 200 SECONDS)
+		to_chat(src, span_danger("You suddenly feel blubbery!"))
+		add_traits(list(TRAIT_FAT, TRAIT_OFF_BALANCE_TACKLER), OBESITY)

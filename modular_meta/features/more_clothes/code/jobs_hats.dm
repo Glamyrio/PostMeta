@@ -11,7 +11,6 @@
 
 
 /obj/item/clothing/head/hats/caphat/setup_reskins()
-	. = ..()
 	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/caphat)
 
 /datum/atom_skin/caphat
@@ -44,7 +43,6 @@
 
 
 /obj/item/clothing/head/hats/hopcap/setup_reskins()
-	. = ..()
  	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/hopcap)
 
 /datum/atom_skin/hopcap

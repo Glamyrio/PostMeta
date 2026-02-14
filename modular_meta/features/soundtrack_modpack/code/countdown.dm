@@ -16,7 +16,7 @@
 		if (!play_to_lobby && isnewplayer(M))
 			continue
 
-		if (!allow_deaf && !M.can_hear())
+		if (!allow_deaf && HAS_TRAIT(M, TRAIT_DEAF))
 			continue
 
 		if (only_station && !is_station_level(M.z))
