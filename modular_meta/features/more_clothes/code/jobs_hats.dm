@@ -11,7 +11,6 @@
 
 
 /obj/item/clothing/head/hats/caphat/setup_reskins()
-	. = ..()
 	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/caphat)
 
 /datum/atom_skin/caphat
@@ -30,13 +29,20 @@
 	new_icon_state = "captain"
 	new_worn_icon = 'icons/mob/clothing/head/hats.dmi'
 
-/datum/atom_skin/caphat/parade/old
+/obj/item/clothing/head/hats/caphat/parade/setup_reskins()
+	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/caphat_parade)
+
+/datum/atom_skin/caphat_parade
+	abstract_type =  /datum/atom_skin/caphat_parade
+	change_base_icon_state = TRUE
+
+/datum/atom_skin/caphat_parade/old
 	preview_name = "Old fashioned"
 	new_icon = 'modular_meta/features/more_clothes/icons/items/head/hats.dmi'
 	new_icon_state = "capcap"
 	new_worn_icon = 'modular_meta/features/more_clothes/icons/on_mob/head/hats.dmi'
 
-/datum/atom_skin/caphat/parade
+/datum/atom_skin/caphat_parade
 	preview_name = "Default"
 	new_icon = 'icons/obj/clothing/head/hats.dmi'
 	new_icon_state = "capcap"
@@ -44,7 +50,6 @@
 
 
 /obj/item/clothing/head/hats/hopcap/setup_reskins()
-	. = ..()
  	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/hopcap)
 
 /datum/atom_skin/hopcap
@@ -85,6 +90,10 @@
 /obj/item/clothing/head/hats/warden/police/setup_reskins()
 	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/wardencap_police)
 
+/datum/atom_skin/wardencap_police
+	abstract_type =  /datum/atom_skin/wardencap_police
+	change_base_icon_state = TRUE
+
 /datum/atom_skin/wardencap_police/default
 	preview_name = "Default"
 	new_icon = 'icons/obj/clothing/head/hats.dmi'
@@ -99,6 +108,10 @@
 
 /obj/item/clothing/head/hats/warden/drill/setup_reskins()
 	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/warden_drill)
+
+/datum/atom_skin/warden_drill
+	abstract_type =  /datum/atom_skin/warden_drill
+	change_base_icon_state = TRUE
 
 /datum/atom_skin/warden_drill/old
 	preview_name = "Old Fashioned"

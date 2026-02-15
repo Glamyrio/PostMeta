@@ -21,7 +21,7 @@
 /datum/atom_skin/hos_armor/trench
 	preview_name = "Trench Cloak"
 	new_icon = 'modular_meta/features/more_clothes/icons/items/suits/armor.dmi'
-	new_icon_state = "hos_cloak"
+	new_icon_state = "trenchcloak"
 	new_worn_icon = 'modular_meta/features/more_clothes/icons/on_mob/suits/armor.dmi'
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/setup_reskins()
@@ -47,11 +47,12 @@
 /datum/atom_skin/hos_trenchcoat/trench
 	preview_name = "Trench Cloak"
 	new_icon = 'modular_meta/features/more_clothes/icons/items/suits/armor.dmi'
-	new_icon_state = "hos_cloak"
+	new_icon_state = "trenchcloak"
 	new_worn_icon = 'modular_meta/features/more_clothes/icons/on_mob/suits/armor.dmi'
 
 /obj/item/clothing/suit/armor/hos/hos_formal/setup_reskins()
-	return
+	. = ..()
+	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/hos_formal, infinite = FALSE)
 
 /datum/atom_skin/hos_formal
 	abstract_type = /datum/atom_skin/hos_formal
@@ -72,13 +73,14 @@
 /datum/atom_skin/hos_formal/trench
 	preview_name = "Trench Cloak"
 	new_icon = 'modular_meta/features/more_clothes/icons/items/suits/armor.dmi'
-	new_icon_state = "hos_cloak"
+	new_icon_state = "trenchcloak"
 	new_worn_icon = 'modular_meta/features/more_clothes/icons/on_mob/suits/armor.dmi'
 
-
-//Due to some stuff(particularly with it having alternative sprite when alt_clicked with reskins \
-it couldn't have been added as reskin variant to the \
+/*
+Due to some stuff(particularly with it having alternative sprite when alt_clicked with reskins
+it couldn't have been added as reskin variant to the
 /obj/item/clothing/suit/armor/hos/hos_formal/ so, we're adding it as a separate item.
+*/
 
 /obj/item/clothing/suit/armor/hos/hos_formal/black
 	name = "\improper Head of Security's parade jacket"
@@ -92,16 +94,6 @@ it couldn't have been added as reskin variant to the \
 	icon_state = "hosformal"
 	worn_icon = 'modular_meta/features/more_clothes/icons/on_mob/suits/armor.dmi'
 	worn_icon_state = "hosformal"
-
-/datum/atom_skin/hos_armor
-	abstract_type = /datum/atom_skin/hos_armor
-	change_base_icon_state = TRUE
-
-/datum/atom_skin/hos_armor/trench
-	preview_name = "Trench Cloak"
-	new_icon = 'modular_meta/features/more_clothes/icons/items/suits/armor.dmi'
-	new_icon_state = "trenchcloak"
-	new_worn_icon = 'modular_meta/features/more_clothes/icons/on_mob/suits/armor.dmi'
 
 //HOS_GARMENT
 
@@ -190,8 +182,8 @@ it couldn't have been added as reskin variant to the \
 	new_icon_state = "capcarapace"
 	new_worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 
+// we dont have reskins for syndicate captain armor vest
 /obj/item/clothing/suit/armor/vest/capcarapace/syndicate/setup_reskins()
-	. = ..()
 	return
 
 /obj/item/clothing/suit/armor/vest/capcarapace/captains_formal/setup_reskins()

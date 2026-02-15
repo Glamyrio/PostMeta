@@ -2,7 +2,6 @@
 #include "code\captain_gloves.dm"
 #include "code\chaplain_suits.dm"
 #include "code\jobs_hats.dm"
-#include "code\reskin.dm"
 #include "code\jobs_suits.dm"
 #include "code\jobs_armor_suits.dm"
 #include "code\labcoats.dm"
@@ -20,4 +19,4 @@
 	https://github.com/tgstation/tgstation/pull/93775 \
 	Не добавляет, а изменяет наши старые модульные рескины \
 	под манер новейшего рефактора от апстрима #93775"
-	author = "Artemchik542(Dracoder) && Bruh24? (maybe?)"
+	author = "Artemchik542(Dracoder) && Bruh24"
