@@ -73,7 +73,7 @@
 /datum/atom_skin/hos_formal/trench
 	preview_name = "Trench Cloak"
 	new_icon = 'modular_meta/features/more_clothes/icons/items/suits/armor.dmi'
-	new_icon_state = "hos_cloak"
+	new_icon_state = "trenchcloak"
 	new_worn_icon = 'modular_meta/features/more_clothes/icons/on_mob/suits/armor.dmi'
 
 /*
