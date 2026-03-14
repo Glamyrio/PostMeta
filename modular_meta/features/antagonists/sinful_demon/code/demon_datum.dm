@@ -117,7 +117,7 @@
 /datum/antagonist/sinfuldemon/on_gain()
 	forge_objectives()
 	owner.current.faction += "hell"
-	for(var/all_traits in sinfuldemon_traits) //M/adds demon traits
+	for(var/all_traits in sinfuldemon_traits) //adds demon traits
 		ADD_TRAIT(owner.current, all_traits, SINFULDEMON_TRAIT)
 	switch(demonsin)
 		if(SIN_GLUTTONY)
@@ -130,10 +130,8 @@
 			var/datum/action/cooldown/spell/jaunt/ethereal_jaunt/sin/jaunt = new(owner.current)
 			jaunt.Grant(owner.current)
 
-			//A/ADD_TRAIT(owner.current, TRAIT_AGEUSIA, SINFULDEMON_TRAIT) // nothing disgusts you
-			//S/ADD_TRAIT(owner.current, TRAIT_EAT_MORE, SINFULDEMON_TRAIT) // 3x hunger rate
-			//S/ADD_TRAIT(owner.current, TRAIT_BOTTOMLESS_STOMACH, SINFULDEMON_TRAIT) // nutrition is capped for infinite eating
-			//M/ADD_TRAIT(owner.current, TRAIT_VORACIOUS, SINFULDEMON_TRAIT) // eat and drink faster & eat infinite snacks
+			var/datum/movespeed_modifier/fatty/fatty = new(owner.current)
+			fatty.Grant(owner.current)
 
 		if(SIN_GREED)
 			var/datum/action/cooldown/spell/shapeshift/demon/demon_form = new(owner.current)
@@ -204,7 +202,7 @@
 
 /datum/antagonist/sinfuldemon/on_removal()
 	owner.current.faction -= "hell"
-	for(var/all_status_traits in owner.current._status_traits) //ETA/removes demon traits
+	for(var/all_status_traits in owner.current._status_traits) //removes demon traits
 		REMOVE_TRAIT(owner.current, all_status_traits, SINFULDEMON_TRAIT)
 	for(var/datum/action/cooldown/spell in owner.current.actions)
 		QDEL_NULL(spell)

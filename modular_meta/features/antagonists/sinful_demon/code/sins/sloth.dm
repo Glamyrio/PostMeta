@@ -24,11 +24,11 @@
 	overlay_icon_state = "bg_demon_border"
 
 	school = SCHOOL_EVOCATION
-	invocation = "MIMIR"
+	invocation = "MI'MIR"
 	invocation_type = INVOCATION_SHOUT
 
 	cooldown_time = 20 SECONDS
-	spell_requirements = NONE
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
 
 	hand_path = /obj/item/melee/touch_attack/sleepy
 

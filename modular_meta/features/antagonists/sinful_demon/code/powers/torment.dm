@@ -12,7 +12,7 @@
 	invocation_type = INVOCATION_SHOUT
 
 	cooldown_time = 30 SECONDS
-	spell_requirements = NONE
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
 
 	hand_path = /obj/item/melee/touch_attack/torment
 
