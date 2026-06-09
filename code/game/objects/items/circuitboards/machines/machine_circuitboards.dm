@@ -1331,6 +1331,27 @@
 		/obj/item/stack/sheet/glass = 1)
 	needs_anchored = FALSE
 
+/obj/item/circuitboard/machine/hydroponics/proc/changeindicators(mob/living/user, obj/item/I)
+	if(build_path == /obj/machinery/hydroponics/constructable/oldstyle)
+		name = "Hydroponics Tray"
+		build_path = /obj/machinery/hydroponics/constructable
+		balloon_alert(user, "defaulting indicator location.")
+	else
+		name = "Old-Designed Hydropoincs Tray"
+		build_path = /obj/machinery/hydroponics/constructable/oldstyle
+		balloon_alert(user, "moving the indicators...")
+	return TRUE
+
+/obj/item/circuitboard/machine/hydroponics/item_interaction(mob/living/user, obj/item/I, list/modifiers)
+	if(istype(I, /obj/item/plant_analyzer))
+		changeindicators(user)
+	else
+		return ..()
+
+/obj/item/circuitboard/machine/hydroponics/screwdriver_act(mob/living/user, obj/item/tool)
+	src.changeindicators(user)
+	return
+
 /obj/item/circuitboard/machine/hydroponics/fullupgrade
 	build_path = /obj/machinery/hydroponics/constructable/fullupgrade
 	specific_parts = TRUE
@@ -1718,6 +1739,7 @@
 		/obj/item/assembly/igniter/condenser = 1,
 		/datum/stock_part/servo = 2,
 		/datum/stock_part/matter_bin = 2,
+		/obj/item/reagent_containers/cup/beaker = 1,
 	)
 
 /obj/item/circuitboard/machine/smelter
@@ -1728,6 +1750,7 @@
 		/obj/item/assembly/igniter = 1,
 		/datum/stock_part/servo = 2,
 		/datum/stock_part/matter_bin = 2,
+		/obj/item/reagent_containers/cup/beaker = 1,
 	)
 
 /obj/item/circuitboard/machine/shieldwallgen
