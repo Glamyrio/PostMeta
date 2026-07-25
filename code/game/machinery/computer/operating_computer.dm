@@ -4,6 +4,7 @@
 /obj/machinery/computer/operating
 	name = "operating computer"
 	desc = "Monitors patient vitals and displays surgery steps. Can be loaded with surgery disks to perform experimental procedures. Automatically syncs to operating tables within its line of sight for surgical tech advancement."
+	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/crew")
 	icon_screen = "crew"
 	icon_keyboard = "med_key"
 	circuit = /obj/item/circuitboard/computer/operating
@@ -101,7 +102,7 @@
 
 /obj/machinery/computer/operating/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
-	if(isliving(user))
+	if(isliving(user) && !issilicon(user))
 		. = min(., ui_check(user))
 
 /// Checks for special ui state conditions

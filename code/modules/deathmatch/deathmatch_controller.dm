@@ -1,7 +1,7 @@
 /datum/deathmatch_controller
 	/// Assoc list of all lobbies (ckey = lobby)
 	var/list/datum/deathmatch_lobby/lobbies = list()
-	/// All deathmatch map templates
+	/// All deathmatch map templates (map_name = map_ref), sorted alphabetically
 	var/list/datum/lazy_template/deathmatch/maps = list()
 	/// All loadouts
 	var/list/datum/outfit/loadouts
@@ -18,6 +18,7 @@
 	for (var/datum/lazy_template/deathmatch/template as anything in subtypesof(/datum/lazy_template/deathmatch))
 		var/map_name = initial(template.name)
 		maps[map_name] = new template
+	maps = sort_list(maps)
 	loadouts = subtypesof(/datum/outfit/deathmatch_loadout)
 	modifiers = sortTim(init_subtypes_w_path_keys(/datum/deathmatch_modifier), GLOBAL_PROC_REF(cmp_deathmatch_mods), associative = TRUE)
 
@@ -35,11 +36,11 @@
 	entry_fee = min(max(round(text2num("[entry_fee]") || 0), 0), 1000)
 
 	if(entry_fee > 0)
-		var/datum/metacoin_shop_controller/shop = get_metacoin_shop_controller()
+		var/datum/metacoin_shop_controller/shop = get_metacoin_controller()
 		if(!shop)
 			return list("ok" = FALSE, "error" = "shop_unavailable")
 
-		var/current_balance = shop.fetch_metacoin_balance(host.ckey)
+		var/current_balance = shop.fetch_balance(host.ckey)
 		if(isnull(current_balance))
 			return list("ok" = FALSE, "error" = "db_unavailable")
 		if(current_balance < entry_fee)
@@ -52,7 +53,7 @@
 	lobbies[host.ckey] = new_lobby
 	deadchat_broadcast(" has opened a new deathmatch lobby. <a href=byond://?src=[REF(new_lobby)];join=1>(Join)</a>", "<B>[host]</B>")
 	return list("ok" = TRUE)
-//MASSMETA EDIT CHANGE START (metacoins)
+//MASSMETA EDIT CHANGE END (metacoins)
 
 /datum/deathmatch_controller/proc/remove_lobby(ckey)
 	var/lobby = lobbies[ckey]

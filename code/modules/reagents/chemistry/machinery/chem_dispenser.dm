@@ -415,15 +415,10 @@
 	return ITEM_INTERACT_BLOCKING
 
 /obj/machinery/chem_dispenser/screwdriver_act(mob/living/user, obj/item/tool)
-	if(default_deconstruction_screwdriver(user, icon_state, icon_state, tool))
-		update_appearance()
-		return ITEM_INTERACT_SUCCESS
-	return ITEM_INTERACT_BLOCKING
+	return default_deconstruction_screwdriver(user, tool)
 
 /obj/machinery/chem_dispenser/crowbar_act(mob/living/user, obj/item/tool)
-	if(default_deconstruction_crowbar(tool))
-		return ITEM_INTERACT_SUCCESS
-	return ITEM_INTERACT_BLOCKING
+	return default_deconstruction_crowbar(user, tool)
 
 /obj/machinery/chem_dispenser/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!tool.can_insert_container(user, src))
@@ -760,6 +755,8 @@
 		/datum/reagent/plantnutriment/eznutriment,
 		/datum/reagent/plantnutriment/left4zednutriment,
 		/datum/reagent/plantnutriment/robustharvestnutriment,
+		/datum/reagent/plantnutriment/endurogrow,
+		/datum/reagent/plantnutriment/liquidearthquake,
 		/datum/reagent/water,
 		/datum/reagent/toxin/plantbgone,
 		/datum/reagent/toxin/plantbgone/weedkiller,

@@ -19,6 +19,7 @@
 #include "features\gainable_mythril\includes.dm"
 #include "features\more_clothes\includes.dm"
 #include "features\hardsuits\includes.dm"
+#include "features\hookahs\includes.dm"
 #include "features\kvass_beverage\includes.dm"
 #include "features\kumiss_beverage\includes.dm"
 #include "features\oguzok_cook\includes.dm"
@@ -50,6 +51,13 @@
 #include "features\bot_topic\includes.dm"
 #include "features\metacoins\includes.dm"
 #include "features\spaceman_races\includes.dm"
+#include "features\ntts-nd-tg-tts\includes.dm"
+#include "features\meta_redesign\includes.dm"
+#include "features\holidays\includes.dm"
+#include "features\jukeboxes_music\code\music.dm"
+#include "features\mentors\includes.dm"
+#include "features\arcades\includes.dm"
+#include "features\progressive_traitor\includes.dm"
 
 /* --- Reverts --- */
 
@@ -71,7 +79,6 @@
 #include "tweaks\better_ui\includes.dm"
 #include "tweaks\del_required_experiments\includes.dm"
 #include "tweaks\fonts\includes.dm"
-#include "tweaks\resprite\includes.dm"
 #include "tweaks\russian_translation\includes.dm"
 #include "tweaks\gases\includes.dm"
 #include "tweaks\heads_on_belts\includes.dm"
@@ -79,3 +86,5 @@
 #include "tweaks\lgbt_removal\includes.dm"
 #include "tweaks\tagline\includes.dm"
 #include "tweaks\simple_vote_by_default\includes.dm"
+#include "tweaks\runtimes_fix\includes.dm"
+#include "tweaks\metacoins_to_homepage\includes.dm"

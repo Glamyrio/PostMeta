@@ -7,3 +7,5 @@
 #include "loadout.dm"
 #include "re_hooch_heals_assistants.dm"
 #include "techweb_nodes.dm"
+#include "mentors.dm"
+#include "signals_traitor.dm"

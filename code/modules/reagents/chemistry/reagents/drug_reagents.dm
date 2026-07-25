@@ -114,7 +114,7 @@
 	. = ..()
 	var/need_mob_update
 	need_mob_update = affected_mob.adjust_tox_loss(0.4 * metabolization_ratio * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype)
-	need_mob_update += affected_mob.adjust_oxy_loss(4.4 * metabolization_ratio * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
+	need_mob_update += affected_mob.adjust_oxy_loss(4.4 * metabolization_ratio * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype)
 	if(need_mob_update)
 		return UPDATE_MOB_HEALTH
 
@@ -302,7 +302,7 @@
 	need_mob_update += affected_mob.adjust_tox_loss(0.5 * metabolization_ratio * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype)
 	if(SPT_PROB(30, seconds_per_tick))
 		affected_mob.losebreath++
-		need_mob_update += affected_mob.adjust_oxy_loss(1, FALSE, required_biotype = affected_biotype, required_respiration_type = affected_respiration_type)
+		need_mob_update += affected_mob.adjust_oxy_loss(1, FALSE, required_biotype = affected_biotype)
 	if(need_mob_update)
 		return UPDATE_MOB_HEALTH
 
@@ -583,7 +583,7 @@
 		psychonaut.apply_status_effect(/datum/status_effect/tower_of_babel)
 
 /datum/reagent/drug/blastoff
-	name = "bLaStOoF"
+	name = "bLaSToFF"
 	description = "A drug for the hardcore party crowd said to enhance one's abilities on the dance floor.\nMost old heads refuse to touch this stuff, perhaps because memories of the luna discotheque incident are seared into their brains."
 	color = "#9015a9"
 	taste_description = "holodisk cleaner"
@@ -769,7 +769,6 @@
 
 	invisible_man.add_traits(list(TRAIT_INVISIBLE_MAN, TRAIT_HIDE_EXTERNAL_ORGANS, TRAIT_NO_BLOOD_OVERLAY), type)
 
-	invisible_man.update_body()
 	invisible_man.remove_from_all_data_huds()
 	invisible_man.sound_environment_override = SOUND_ENVIROMENT_PHASED
 
@@ -781,7 +780,6 @@
 
 		to_chat(invisible_man, span_notice("As you sober up, opacity once again returns to your body meats."))
 
-	invisible_man.update_body()
 	invisible_man.sound_environment_override = NONE
 
 	if(!invisible_man.hud_used)

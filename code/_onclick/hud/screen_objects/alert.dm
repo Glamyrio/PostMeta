@@ -86,6 +86,8 @@
 	alerts -= category
 	if(client && hud_used)
 		hud_used.reorganize_alerts()
+		for(var/mob/viewer as anything in observers)
+			viewer.client?.screen -= alert
 		client.screen -= alert
 	qdel(alert)
 
@@ -408,6 +410,8 @@
 	var/screentip_override_text
 	/// Whether the offered item can be examined by shift-clicking the alert
 	var/examinable = TRUE
+	/// Whether this item should bypass active hand checks.
+	var/bypass_active_hand = FALSE
 
 /atom/movable/screen/alert/give/Initialize(mapload, datum/hud/hud_owner)
 	. = ..()
@@ -486,8 +490,12 @@
 	var/mob/living/taker = owner
 	var/mob/living/offerer = offer.owner
 	var/obj/item/receiving = offer.offered_item
-	taker.take(offerer, receiving)
+	taker.take(offerer, receiving, bypass_active_hand)
 	SEND_SIGNAL(offerer, COMSIG_LIVING_ITEM_GIVEN, taker, receiving)
+
+/// Mostly for borgs to offer items.
+/atom/movable/screen/alert/give/borg
+	bypass_active_hand = TRUE
 
 /atom/movable/screen/alert/give/highfive
 	additional_desc_text = "Click this alert to slap it."
@@ -549,7 +557,7 @@
 	SIGNAL_HANDLER
 
 	if(QDELETED(offer.offered_item))
-		examine_list += span_warning("[source]'s arm appears tensed up, as if [source.p_they()] plan on pulling it back suddenly...")
+		examine_list += span_warning("[source]'s arm appears tensed up, as if [source.p_they()] plan[source.p_s()] on pulling it back suddenly...")
 
 /atom/movable/screen/alert/give/hand
 	screentip_override_text = "Take Hand"
@@ -753,12 +761,6 @@
 
 
 //GUARDIANS
-
-/atom/movable/screen/alert/canstealth
-	name = "Stealth Ready"
-	desc = "You are ready to enter stealth!"
-	icon_state = "guardian_canstealth"
-	alerttooltipstyle = "parasite"
 
 /atom/movable/screen/alert/status_effect/instealth
 	name = "In Stealth"
@@ -1018,7 +1020,7 @@
 			return PROCESS_KILL
 		cut_overlay(time_left_overlay)
 		time_left_overlay = new
-		time_left_overlay.maptext = MAPTEXT("<span style='color: [(timeleft <= 10 SECONDS) ? "red" : "white"]'><b>[CEILING(timeleft / (1 SECONDS), 1)]</b></span>")
+		time_left_overlay.maptext = MAPTEXT("<span style='color: [(timeleft <= 10 SECONDS) ? "red" : "white"]'><b>[ceil(timeleft / (1 SECONDS))]</b></span>")
 		time_left_overlay.transform = time_left_overlay.transform.Translate(4, 19)
 		add_overlay(time_left_overlay)
 
@@ -1160,13 +1162,13 @@
 	if(!.)
 		return
 
-	var/mob/living/carbon/carbon_owner = owner
+	var/mob/living/carbon/human/human_owner = owner
 
-	if(!carbon_owner.can_resist() || !carbon_owner.shoes)
+	if(!human_owner.can_resist() || !human_owner.shoes)
 		return
 
-	carbon_owner.changeNext_move(CLICK_CD_RESIST)
-	carbon_owner.shoes.handle_tying(carbon_owner)
+	human_owner.changeNext_move(CLICK_CD_RESIST)
+	human_owner.shoes.handle_tying(human_owner)
 
 /atom/movable/screen/alert/shoes/untied
 	name = "Untied Shoes"
@@ -1209,10 +1211,11 @@
 	if(!screenmob.client)
 		return FALSE
 	var/list/alerts = mymob.alerts
-	if(!hud_shown)
+	if(hud_version != HUD_STYLE_STANDARD)
 		for(var/i in 1 to alerts.len)
 			screenmob.client.screen -= alerts[alerts[i]]
 		return TRUE
+
 	var/user_pref_hud = ui_style2icon(mymob.client?.prefs?.read_preference(/datum/preference/choiced/ui_style))
 	for(var/i in 1 to length(alerts))
 		var/atom/movable/screen/alert/alert = alerts[alerts[i]]

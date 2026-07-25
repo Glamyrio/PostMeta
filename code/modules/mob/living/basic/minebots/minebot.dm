@@ -110,7 +110,7 @@
 
 	for(var/obj/item/borg/upgrade/modkit/modkit as anything in stored_gun.modkits)
 		. += span_notice("There is \a [modkit] installed, using <b>[modkit.cost]%</b> capacity.")
-	if(ai_controller && ai_controller.ai_status == AI_STATUS_IDLE)
+	if(ai_controller && ai_controller.ai_status == AI_STATUS_OFF && ai_controller.get_expected_ai_status() == AI_STATUS_ON)
 		. += "The [src] appears to be in <b>sleep mode</b>. You can restore normal functions by <b>tapping</b> it."
 
 
@@ -137,8 +137,8 @@
 
 /mob/living/basic/mining_drone/attack_hand(mob/living/carbon/human/user, list/modifiers)
 	if(!user.combat_mode)
-		if(ai_controller && ai_controller.ai_status == AI_STATUS_IDLE)
-			ai_controller.set_ai_status(AI_STATUS_ON)
+		if(ai_controller && ai_controller.ai_status == AI_STATUS_OFF)
+			ai_controller.reset_ai_status() //wakes a performance-slept bot, no-op if it is off for a real reason
 		if(LAZYACCESS(modifiers, LEFT_CLICK)) //Lets Right Click be specifically for re-enabling their AI (and avoiding the UI popup), while Left Click simply does both.
 			ui_interact(user)
 		return
@@ -255,13 +255,13 @@
 
 /mob/living/basic/mining_drone/early_melee_attack(atom/target, list/modifiers, ignore_cooldown)
 	. = ..()
-	if(!.)
-		return FALSE
+	if(.)
+		return
 
 	if(!istype(target, /mob/living/basic/node_drone))
-		return TRUE
+		return BASIC_MOB_CONTINUE_ATTACK_CHAIN
 	repair_node_drone(target)
-	return FALSE
+	return BASIC_MOB_END_ATTACK_CHAIN_COOLDOWN
 
 /mob/living/basic/mining_drone/proc/repair_node_drone(mob/living/my_target)
 	do_sparks(5, FALSE, source = my_target)

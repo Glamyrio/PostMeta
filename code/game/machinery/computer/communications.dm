@@ -10,6 +10,7 @@
 /obj/machinery/computer/communications
 	name = "communications console"
 	desc = "A console used for high-priority announcements and emergencies."
+	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/communications")
 	icon_screen = "comm"
 	icon_keyboard = "tech_key"
 	req_access = list(ACCESS_COMMAND)
@@ -22,6 +23,10 @@
 	/// Cooldown for important actions, such as messaging CentCom or other sectors
 	COOLDOWN_DECLARE(static/important_action_cooldown)
 	COOLDOWN_DECLARE(static/emergency_access_cooldown)
+	//MASSMETA EDIT START (ntts && tgtts)
+	COOLDOWN_DECLARE(sec_level_cd)
+	//MASSMETA EDIT END (ntts && tgtts)
+
 
 	/// Whether syndicate mode is enabled or not.
 	var/syndicate = FALSE
@@ -59,6 +64,7 @@
 	var/last_toggled
 
 /obj/machinery/computer/communications/syndicate
+	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/communications/syndicate")
 	icon_screen = "commsyndie"
 	circuit = /obj/item/circuitboard/computer/communications/syndicate
 	req_access = list(ACCESS_SYNDICATE_LEADER)
@@ -110,11 +116,11 @@
 		return TRUE
 	return authenticated
 
-/obj/machinery/computer/communications/attackby(obj/I, mob/user, list/modifiers, list/attack_modifiers)
-	if(isidcard(I))
-		attack_hand(user)
-	else
-		return ..()
+/obj/machinery/computer/communications/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(!isidcard(tool))
+		return NONE
+	attack_hand(user)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/computer/communications/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(istype(emag_card, /obj/item/card/emag/battlecruiser))
@@ -208,8 +214,19 @@
 				return
 			if (SSsecurity_level.get_current_level_as_number() == new_sec_level)
 				return
+			// MASSMETA EDIT START (ntts && tgtts)
+			if(SStts.tts_enabled)
+				if(!COOLDOWN_FINISHED(src, sec_level_cd))
+					to_chat(user, span_warning("You must wait before changing the security level again."))
+					return
+			// MASSMETA EDIT END (ntts && tgtts)
 
 			SSsecurity_level.set_level(new_sec_level)
+			// MASSMETA EDIT START (ntts && tgtts)
+			// we must prevent tts misusage
+			if(SStts.tts_enabled)
+				COOLDOWN_START(src, sec_level_cd, 30 SECONDS)
+			// MASSMETA EDIT END (ntts && tgtts)
 
 			to_chat(user, span_notice("Authorization confirmed. Modifying security level."))
 			playsound(src, 'sound/machines/terminal/terminal_prompt_confirm.ogg', 50, FALSE)
